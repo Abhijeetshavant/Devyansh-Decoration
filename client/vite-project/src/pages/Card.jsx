@@ -4,7 +4,7 @@ const Card = () => {
   const [cardData, setcardData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/card/allcard", {
+      .get("https://devyansh-decoration.vercel.app/api/card/allcard", {
         headers: {
           "Content-Type": "application/json",
         },

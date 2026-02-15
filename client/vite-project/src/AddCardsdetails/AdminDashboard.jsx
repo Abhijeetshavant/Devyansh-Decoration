@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
-const API_URL = "http://localhost:3000/api/card";
+const API_URL = "https://devyansh-decoration.vercel.app/api/card";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();

@@ -56,7 +56,7 @@ const AddCard = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/card/",
+        "https://devyansh-decoration.vercel.app/api/card/",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
