@@ -14,7 +14,8 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    // origin: "http://localhost:5173",
+    origin: "https://devyansh-decoration-frontend.vercel.app/",
     credentials: true,
   }),
 );
