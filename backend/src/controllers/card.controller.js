@@ -22,7 +22,7 @@ async function createCard(req, res) {
       description,
       price: Number(price),
       discount: Number(discount || 0),
-      img: fileUploadResult.url,
+      img: fileUploadResult.secure_url,
     });
 
     return res.status(201).json({

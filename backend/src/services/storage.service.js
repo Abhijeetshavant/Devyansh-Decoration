@@ -1,16 +1,27 @@
-import ImageKit from "imagekit";
+import { v2 as cloudinary } from "cloudinary";
+import streamifier from "streamifier";
 
-const imagekit = new ImageKit({
-  publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
-  privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
-  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-async function uploadFile(file, fileName) {
-  return await imagekit.upload({
-    file,
-    fileName,
+const uploadFile = (buffer, fileName) => {
+  return new Promise((resolve, reject) => {
+    const uploadStream = cloudinary.uploader.upload_stream(
+      {
+        folder: "devyansh-decoration",
+        public_id: fileName,
+      },
+      (error, result) => {
+        if (error) return reject(error);
+        resolve(result);
+      },
+    );
+
+    streamifier.createReadStream(buffer).pipe(uploadStream);
   });
-}
+};
 
 export default uploadFile;
